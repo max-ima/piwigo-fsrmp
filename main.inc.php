@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: piwigo-fsrmp
-Version: 1.2.0
+Version: 1.2.1
 Description: Adds a filter to batch manager in order to retrieve system recently modified pictures
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=870
 Author: TOnin
