@@ -1,1 +1,1 @@
-This is not a plugin. It's a skeleton for future plugins.
+Adds a filter to batch manager in order to retrieve OS recently modified pictures

@@ -1,1 +1,1 @@
-This is not a plugin. It's a skeleton for future plugins.
+Ajoute un filtre à la gestion par lot pour récupérer les fichiers images récemment modifiés sur le système
