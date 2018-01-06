@@ -8,50 +8,54 @@ defined('PHPWG_ROOT_PATH') or die('Hacking attempt!');
  */
 class fsrmp_maintain extends PluginMaintain
 {
-  private $default_conf = array(
-    'nb1' => 60,
-    'unit1' => 'mmin',
-    'nb2' => 1,
-    'unit2' => 'mtime',
-    );
+	private $default_conf = array(
+		'nb1' => 60,
+		'unit1' => 'mmin',
+		'nb2' => 1,
+		'unit2' => 'mtime',
+		'batch_manager' => array(
+			'latest' => 0,
+			'nb' => 0,
+		),
+	);
 
-  private $table;
-  private $dir;
+	private $table;
+	private $dir;
 
-  function __construct($plugin_id)
-  {
-    parent::__construct($plugin_id); // always call parent constructor
-  }
+	function __construct($plugin_id)
+	{
+		parent::__construct($plugin_id); // always call parent constructor
+	}
 
-  /**
-   * Plugin installation
-   *
-   * Perform here all needed step for the plugin installation such as create default config,
-   * add database tables, add fields to existing tables, create local folders...
-   */
-  function install($plugin_version, &$errors=array())
-  {
-    global $conf;
+	/**
+	* Plugin installation
+	*
+	* Perform here all needed step for the plugin installation such as create default config,
+	* add database tables, add fields to existing tables, create local folders...
+	*/
+	function install($plugin_version, &$errors=array())
+	{
+		global $conf;
 
-    // add config parameter
-    if (empty($conf['fsrmp']))
-    {
-      // conf_update_param well serialize and escape array before database insertion
-      // the third parameter indicates to update $conf['fsrmp'] global variable as well
-      conf_update_param('fsrmp', $this->default_conf, true);
-    }
-    else
-    {
-      $old_conf = safe_unserialize($conf['fsrmp']);
+		// add config parameter
+		if (empty($conf['fsrmp']))
+		{
+		// conf_update_param well serialize and escape array before database insertion
+		// the third parameter indicates to update $conf['fsrmp'] global variable as well
+		conf_update_param('fsrmp', $this->default_conf, true);
+		}
+		else
+		{
+		$old_conf = safe_unserialize($conf['fsrmp']);
 
-      if (empty($old_conf['option3']))
-      { // use case: this parameter was added in a new version
-        $old_conf['option3'] = 'two';
-      }
+		if (empty($old_conf['option3']))
+		{ // use case: this parameter was added in a new version
+			$old_conf['option3'] = 'two';
+		}
 
-      conf_update_param('fsrmp', $old_conf, true);
-    }
-  }
+		conf_update_param('fsrmp', $old_conf, true);
+		}
+	}
 
   /**
    * Plugin activation

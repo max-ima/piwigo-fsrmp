@@ -33,23 +33,26 @@ jQuery(".showInfo").tipTip({
 <form method="post" action="" class="properties">
 <fieldset>
 	<legend>{'First filter'|translate}</legend>
-    <label>{'Number'|translate}
+    <label>{'Since'|translate}
 	   <input type="text" name="FSRMPPLUGIN_VAR_NB1" value="{$fsrmp.nb1}" size="2" />
     </label>
     <label>
 		{html_options name=FSRMPPLUGIN_VAR_UNIT1 options=$select_options selected=$fsrmp.unit1}
-		{'Unit'|translate}
     </label>
 </fieldset>
 <fieldset>
 	<legend>{'Second filter'|translate}</legend>
-    <label>{'Number'|translate}
+    <label>{'Since'|translate}
 	   <input type="text" name="FSRMPPLUGIN_VAR_NB2" value="{$fsrmp.nb2}" size="2" />
     </label>
     <label>
 		{html_options name=FSRMPPLUGIN_VAR_UNIT2 options=$select_options selected=$fsrmp.unit2}
-		{'Unit'|translate}
     </label>
+</fieldset>
+<fieldset>
+	<legend>{'Third filter'|translate}</legend>
+	<label>{'Since the latest batch manager metadata update.'|translate} ({'with'|translate} {$fsrmp.batch_manager.nb} {'pictures'|translate})</br/>
+	{'Since about'|translate} <strong>{$fsrmp_bm_mmin} {'mmin'|translate}{if 1<$fsrmp_bm_mmin}s{/if}</strong>  ({'or since about'|translate} {$fsrmp_bm_mtime} {'mtime'|translate}{if 1<$fsrmp_bm_mtime}s{/if}).</br>{'Due to ceiling of time interval, some updated pictures may remain in the filter.'|translate}</label>
 </fieldset>
  
 <p class="formButtons"><input type="submit" name="save_config" value="{'Save Settings'|translate}"></p>

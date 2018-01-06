@@ -2,10 +2,12 @@
 
 $lang['Fsrmp'] = 'Filtre fsrmp';
 
+
 // batch manager
-$lang['Modified since less than %d %s'] = 'Modifié depuis moins de %d %s';
+$lang['Modified since less than %d %s'] = 'Modifiées depuis moins de %d %s';
 $lang['mmin'] = 'minute';
 $lang['mtime'] = 'jour';
+$lang['Modified since previous bm.metadata (%d files), since less than about %d %s'] = 'Modifiées depuis la dernière màj bm.metadata (%d fichiers), il y a un peu moins de %d %s';
 
 
 // home
@@ -19,9 +21,16 @@ $lang['to grab files modified within lastest 7 days;'] = 'pour récupérer les f
 $lang['to follow symlinks;'] = 'pour suivre les liens symboliques ;';
 $lang['to list files;'] = 'pour lister des fichiers ;';
 $lang['check your man page.'] = 'vérifiez votre page man.';
+$lang['Since'] = 'Depuis';
 $lang['Number'] = 'Nombre';
 $lang['Unit'] = 'Unité';
 $lang['First filter'] = 'Premier filtre';
 $lang['Second filter'] = 'Second filtre';
-
+$lang['Third filter'] = 'Troisième filtre';
+$lang['Since the latest batch manager metadata update.'] = 'Depuis la dernière synchronisation par lot des méta-données.' ;
+$lang['Since about'] = 'Depuis environ';
+$lang['with'] = 'avec';
+$lang['pictures'] = 'images';
+$lang['or since about'] = 'ou depuis environ';
+$lang['Due to ceiling of time interval, some updated pictures may remain in the filter.'] = 'Du fait de l\'arrondi du calcul de la durée, certaines images synchronisées pourraient rester dans le filtre.' ;
 ?>

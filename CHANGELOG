@@ -1,0 +1,21 @@
+Changes from v1.2.1 to v1.2.2
+- Restrict field number between 1 and 9999 (number of minutes or days)
+- Add storing for latest batch_manager metadata update timestamp (and number of files involved)
+- Add third filter looking for files modified since then
+- Add ability to find videos which representatives have been modified 
+  (useful if representative metadata are placeholders for video metadata)
+- Improve var testing (empty value do nothing instead of WARNING)
+
+Changes from v1.2.0 to v1.2.1
+- Improvment: descriptions
+
+Changes from v1.1 to v1.2.0
+- Changed: use skeleton canevas
+- Changed: config saved in database
+
+Changes from v1.0 to v1.1
+
+Initial Release v1.0
+- Initial release
+- Initial documentation
+

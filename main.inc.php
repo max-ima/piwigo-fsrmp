@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: piwigo-fsrmp
-Version: 1.2.1
+Version: 1.2.2
 Description: Adds a filter to batch manager in order to retrieve system recently modified pictures
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=870
 Author: TOnin
@@ -55,6 +55,10 @@ if (defined('IN_ADMIN'))
 
 	// Hook to perfom the filter in the batch mode
 	add_event_handler('perform_batch_manager_prefilters', 'fsrmp_perform_batch_manager_prefilters',
+    EVENT_HANDLER_PRIORITY_NEUTRAL, $admin_file);
+
+	// Hook to store date-time if metadata action batch mode
+	add_event_handler('element_set_global_action', 'fsrmp_element_set_global_action',
     EVENT_HANDLER_PRIORITY_NEUTRAL, $admin_file);
 }
 
