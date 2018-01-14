@@ -1,1 +1,1 @@
-Ajoute un filtre à la gestion par lot pour récupérer les fichiers images récemment modifiés sur le système
+Ajoute des filtres à la gestion par lot pour récupérer les fichiers images récemment modifiés sur le système

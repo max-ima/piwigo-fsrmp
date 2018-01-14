@@ -69,7 +69,7 @@ function fsrmp_perform_batch_manager_prefilters($filter_sets, $prefilter)
 			$list = array() ;
 		}
 		
-		$list_f = array_map('pwg_db_real_escape_string', array_map('basename', array_map('fsrmp_pr2video', $list))) ;
+		$list_f = array_map('pwg_db_real_escape_string', array_map('basename', array_map('fsrmp_pwg_representative_to_original', $list))) ;
 		$in_list = "('".implode("', '", $list_f)."')" ;
 		
 		if ( !empty($list_f) )
@@ -111,15 +111,18 @@ function fsrmp_duration($interval = 'mmin') {
 }
 
 /*
-Detects if the file is a pwg_representative of a video
-Try to return video file path
+Detects if the file is a pwg_representative (of a video)
+Try to return represented file path (video file)
 string $file : '/absolute/path/to/file'
 */
-function fsrmp_pr2video($file) {
-	if(in_array(substr($file, -7), array('_lq.jpg', '_hq.jpg')) && 'pwg_representative'==basename(dirname($file))) {
-		foreach(array('avi', '3gp', 'mov') as $ext) {
-			if (file_exists(dirname(dirname($file)).'/'.substr(basename($file), 0, -7).'.'.$ext)) {
-				return dirname(dirname($file)).'/'.substr(basename($file), 0, -7).'.'.$ext ;
+function fsrmp_pwg_representative_to_original($file) {
+	global $conf;
+	if('pwg_representative' == basename(dirname($file))) {
+		$original = pathinfo($file, PATHINFO_FILENAME) ;
+		$original_path = dirname(dirname($file)) ;
+		foreach($conf['file_ext'] as $ext) {
+			if (file_exists($original_path.'/'.$original.'.'.$ext)) {
+				return $original_path.'/'.$original.'.'.$ext ;
 			}
 		}
 	}

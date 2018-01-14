@@ -2,7 +2,7 @@
 /*
 Plugin Name: Filtre fsrmp
 Version: 1.2.3
-Description: Adds a filter to batch manager in order to retrieve system recently modified pictures
+Description: Adds filters to batch manager in order to retrieve OS recently modified pictures
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=870
 Author: TOnin
 Author URI: https://github.com/7tonin

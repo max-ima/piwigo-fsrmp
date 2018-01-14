@@ -1,1 +1,1 @@
-Adds a filter to batch manager in order to retrieve OS recently modified pictures
+Adds filters to batch manager in order to retrieve OS recently modified pictures

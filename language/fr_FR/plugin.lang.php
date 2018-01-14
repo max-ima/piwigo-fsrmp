@@ -7,7 +7,7 @@ $lang['Fsrmp'] = 'Filtre fsrmp';
 $lang['Modified since less than %d %s'] = 'Modifiées depuis moins de %d %s';
 $lang['mmin'] = 'minute';
 $lang['mtime'] = 'jour';
-$lang['Modified since previous bm.metadata (%d files), since less than about %d %s'] = 'Modifiées depuis la dernière màj bm.metadata (%d fichiers), il y a un peu moins de %d %s';
+$lang['Modified since previous bm.metadata (%d files), since less than about %d %s'] = 'Modifiées depuis la dernière synchro metadata (%d fichiers), il y a un peu moins de %d %s';
 
 
 // home
