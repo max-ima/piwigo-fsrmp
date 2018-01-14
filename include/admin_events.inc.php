@@ -34,7 +34,7 @@ function fsrmp_get_batch_manager_prefilters($prefilters)
 		$prefilters[] = array(
 			'ID' => 'fsrmp3', 
 			'NAME' => l10n('Modified since previous bm.metadata (%d files), since less than about %d %s', 
-				$conf['fsrmp']['batch_manager_metadata']['nb'],
+				$conf['fsrmp']['batch_manager_metadata']['pictures_nb'],
 				fsrmp_duration(), 
 				l10n('mmin').'s'
 			)
