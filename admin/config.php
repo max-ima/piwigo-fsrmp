@@ -20,6 +20,17 @@ if (isset($_POST['save_config']))
 	if(preg_match('/^(mmin|mtime)$/', $_POST['FSRMPPLUGIN_VAR_UNIT2'])) {
 		$conf['fsrmp']['unit2'] = $_POST['FSRMPPLUGIN_VAR_UNIT2'];
 	}
+	if(isset($_POST['FSRMPPLUGIN_VAR_ENABLED_FILTERS']) && is_array($_POST['FSRMPPLUGIN_VAR_ENABLED_FILTERS'])) {
+		$conf['fsrmp']['enabled_filters'] = array();
+		foreach($_POST['FSRMPPLUGIN_VAR_ENABLED_FILTERS'] as $key => $val) {
+			if(preg_match('/^(f1|f2|f3)$/', $val)) {
+				$conf['fsrmp']['enabled_filters'][] = $val;
+			}
+		}
+	}
+	else {
+		$conf['fsrmp']['enabled_filters'] = array();
+	}
 
 	conf_update_param('fsrmp', $conf['fsrmp']);
 	$page['infos'][] = l10n('Information data registered in database');

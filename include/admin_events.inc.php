@@ -18,22 +18,28 @@ function fsrmp_get_batch_manager_prefilters($prefilters)
 {
 	global $conf;
   
-	$prefilters[] = array(
-		'ID' => 'fsrmp1', 
-		'NAME' => l10n('Modified since less than %d %s', $conf['fsrmp']['nb1'], l10n($conf['fsrmp']['unit1']).((1<$conf['fsrmp']['nb1'])?'s':'') )
-	);
-	$prefilters[] = array(
-		'ID' => 'fsrmp2', 
-		'NAME' => l10n('Modified since less than %d %s', $conf['fsrmp']['nb2'], l10n($conf['fsrmp']['unit2']).((1<$conf['fsrmp']['nb2'])?'s':'') )
-	);
-	$prefilters[] = array(
-		'ID' => 'fsrmpP', 
-		'NAME' => l10n('Modified since previous bm.metadata (%d files), since less than about %d %s', 
-			$conf['fsrmp']['batch_manager']['nb'],
-			fsrmp_duration(), 
-			l10n('mmin').'s'
-		)
-	);
+	if (in_array('f1', $conf['fsrmp']['enabled_filters'])) {
+		$prefilters[] = array(
+			'ID' => 'fsrmp1', 
+			'NAME' => l10n('Modified since less than %d %s', $conf['fsrmp']['nb1'], l10n($conf['fsrmp']['unit1']).((1<$conf['fsrmp']['nb1'])?'s':'') )
+		);
+	}
+	if (in_array('f2', $conf['fsrmp']['enabled_filters'])) {
+		$prefilters[] = array(
+			'ID' => 'fsrmp2', 
+			'NAME' => l10n('Modified since less than %d %s', $conf['fsrmp']['nb2'], l10n($conf['fsrmp']['unit2']).((1<$conf['fsrmp']['nb2'])?'s':'') )
+		);
+	}
+	if (in_array('f3', $conf['fsrmp']['enabled_filters'])) {
+		$prefilters[] = array(
+			'ID' => 'fsrmp3', 
+			'NAME' => l10n('Modified since previous bm.metadata (%d files), since less than about %d %s', 
+				$conf['fsrmp']['batch_manager_metadata']['nb'],
+				fsrmp_duration(), 
+				l10n('mmin').'s'
+			)
+		);
+	}
 	return $prefilters;
 }
 
@@ -49,7 +55,7 @@ function fsrmp_perform_batch_manager_prefilters($filter_sets, $prefilter)
 // 			$filter = "-mtime -1";
 		$filter = sprintf('-%s -%d', $conf['fsrmp']['unit2'], $conf['fsrmp']['nb2']);
 	}
-	else if ($prefilter==="fsrmpP") {
+	else if ($prefilter==="fsrmp3") {
 // 			$filter = "-mmin -16573";
 		$filter = sprintf('-%s -%d', 'mmin', fsrmp_duration());
 	}
@@ -83,8 +89,8 @@ function fsrmp_element_set_global_action($action, $collection) {
 	global $conf;
 
 	if('metadata'==$action) {
-		$conf['fsrmp']['batch_manager']['latest'] = time();
-		$conf['fsrmp']['batch_manager']['nb'] = count($collection);
+		$conf['fsrmp']['batch_manager_metadata']['latest'] = time();
+		$conf['fsrmp']['batch_manager_metadata']['pictures_nb'] = count($collection);
 		conf_update_param('fsrmp', $conf['fsrmp']);
 	}
 }
@@ -101,7 +107,7 @@ function fsrmp_duration($interval = 'mmin') {
 	default : $seconds_interval = 60 ; 
 	}
 	// one more second to make sure no file will be forgotten
-	return ceil((1+time()-$conf['fsrmp']['batch_manager']['latest'])/$seconds_interval) ;
+	return ceil((1+time()-$conf['fsrmp']['batch_manager_metadata']['latest'])/$seconds_interval) ;
 }
 
 /*

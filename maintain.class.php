@@ -13,9 +13,14 @@ class fsrmp_maintain extends PluginMaintain
 		'unit1' => 'mmin',
 		'nb2' => 1,
 		'unit2' => 'mtime',
-		'batch_manager' => array(
+		'batch_manager_metadata' => array(
 			'latest' => 0,
-			'nb' => 0,
+			'pictures_nb' => 0,
+		),
+		'enabled_filters' => array(
+			'f1',
+			'f2',
+			'f3',
 		),
 	);
 
@@ -40,20 +45,24 @@ class fsrmp_maintain extends PluginMaintain
 		// add config parameter
 		if (empty($conf['fsrmp']))
 		{
-		// conf_update_param well serialize and escape array before database insertion
-		// the third parameter indicates to update $conf['fsrmp'] global variable as well
-		conf_update_param('fsrmp', $this->default_conf, true);
+			// conf_update_param well serialize and escape array before database insertion
+			// the third parameter indicates to update $conf['fsrmp'] global variable as well
+			conf_update_param('fsrmp', $this->default_conf, true);
 		}
 		else
 		{
-		$old_conf = safe_unserialize($conf['fsrmp']);
+			$old_conf = safe_unserialize($conf['fsrmp']);
 
-		if (empty($old_conf['option3']))
-		{ // use case: this parameter was added in a new version
-			$old_conf['option3'] = 'two';
-		}
+			if (empty($old_conf['batch_manager_metadata']))
+			{ // use case: this parameter was added in version 1.2.2
+				$old_conf['batch_manager_metadata'] = $this->default_conf['batch_manager_metadata'];
+			}
+			if (empty($old_conf['enabled_filters']))
+			{ // use case: this parameter was added in version 1.2.2
+				$old_conf['enabled_filters'] = $this->default_conf['enabled_filters'];
+			}
 
-		conf_update_param('fsrmp', $old_conf, true);
+			conf_update_param('fsrmp', $old_conf, true);
 		}
 	}
 
