@@ -1,3 +1,6 @@
+Changes from v1.2.2 to v1.2.3
+- Correct display bug (variable miswritten)
+
 Changes from v1.2.1 to v1.2.2
 - Restrict field number between 1 and 9999 (number of minutes or days)
 - Add storing for latest batch_manager_metadata update timestamp (and number of files involved)
