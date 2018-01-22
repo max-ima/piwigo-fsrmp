@@ -1,4 +1,8 @@
 
+Changes from v1.2.3 to v1.2.3.e
+- version numbers
+- Git repository configuration reset
+
 Changes from v1.2.2 to v1.2.3
 - Readme.md
 - Add ability to list every file wich representative has been modified. (video was only a special case)

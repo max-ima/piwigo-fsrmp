@@ -7,6 +7,6 @@ When some pictures are updated by another application in some sparse categories,
 * These filters are tunable. 
 * Are enabled only those checked in the configuration page.
 
-**Example:** assume, once in a while, you are adding some tags to you pictures with jBrout software (or digikam, ...). If your tags are stored within the picture, tagging is modifying your file. You will be happy PIWIGO to get these pictures metadata quickly up to date.
+**Example:** assume, once in a while, you are adding some tags to your pictures with jBrout software (or digikam, ...). If your tags are stored within the picture, tagging is modifying your file. You will be happy PIWIGO to get these pictures metadata quickly up to date.
 
 **NB:** you can also add tags to a representatives picture. The represented file will be listed in the batch manager. For instance a video.
