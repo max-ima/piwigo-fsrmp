@@ -1,7 +1,7 @@
 
 Changes from v1.2.3.e to v1.2.4
 - Compatibility with Piwigo 11
-- Scan both ./galleries/ AND ./upload/ directories
+- Now scans both ./galleries/ AND ./upload/ directories
 
 Changes from v1.2.3 to v1.2.3.e
 - version numbers
