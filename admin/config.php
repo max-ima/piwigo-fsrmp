@@ -42,6 +42,7 @@ $select_options = array(
   );
 
 // send config to template
+include_once(FSRMP_PATH . 'include/admin_events.inc.php');
 $template->assign(array(
   'fsrmp' => $conf['fsrmp'],
   'fsrmp_bm_mmin' => fsrmp_duration(),

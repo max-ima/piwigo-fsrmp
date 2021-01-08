@@ -1,11 +1,12 @@
 <?php
 /*
 Plugin Name: Filtre fsrmp
-Version: 1.2.3.e
+Version: 1.2.4
 Description: Adds filters to batch manager in order to retrieve OS recently modified pictures
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=870
 Author: TOnin
 Author URI: https://github.com/7tonin
+Has Settings: true
 */
 
 /**

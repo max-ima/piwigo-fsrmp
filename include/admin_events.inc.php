@@ -61,20 +61,30 @@ function fsrmp_perform_batch_manager_prefilters($filter_sets, $prefilter)
 	}
 		
 	if(isset($filter)) {
+		// Looking into galleries/ dir
 		$cmd = 'find -L '.PHPWG_ROOT_PATH.'galleries'.' -type f '.$filter.'' ;
 		if(exec($cmd, $output)) {
-			$list = $output ;
+			$list_g = $output ;
 		}
 		else {
-			$list = array() ;
+			$list_g = array() ;
 		}
 		
-		$list_f = array_map('pwg_db_real_escape_string', array_map('basename', array_map('fsrmp_pwg_representative_to_original', $list))) ;
-		$in_list = "('".implode("', '", $list_f)."')" ;
+		// Looking into upload/ dir
+		$cmd = 'find -L '.PHPWG_ROOT_PATH.'upload'.' -type f '.$filter.'' ;
+		if(exec($cmd, $output)) {
+			$list_u = $output ;
+		}
+		else {
+			$list_u = array() ;
+		}
 		
-		if ( !empty($list_f) )
+		$list = array_merge($list_g, $list_u);
+		
+		if ( !empty($list) )
 		{
-			$query = "SELECT id FROM ".IMAGES_TABLE." WHERE file IN ".$in_list;
+            $in_list = "('".implode("', '", $list)."')" ;
+			$query = "SELECT id FROM ".IMAGES_TABLE." WHERE path IN ".$in_list;
 			$filter_sets[] = array_from_query($query, 'id');
 		}
 	}
