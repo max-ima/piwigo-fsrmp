@@ -1,0 +1,1 @@
+Upravitelju paketov doda filtre za pridobivanje nedavno spremenjenih slik OS
